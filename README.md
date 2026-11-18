@@ -1,3 +1,5 @@
+<img src="assets/icon.png" alt="Promptli Comms" width="96" align="right">
+
 # Promptli Comms for Hermes Agent
 
 Give [Hermes Agent](https://github.com/NousResearch/hermes-agent) (Nous Research) its own email address
