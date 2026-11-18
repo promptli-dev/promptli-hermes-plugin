@@ -1,0 +1,54 @@
+name: promptli-comms
+label: Promptli Comms (email, SMS, calls)
+kind: platform
+version: 0.1.0
+manifest_version: 2
+api_version: 1
+description: >
+  Give Hermes its own email address and phone number with Promptli Comms. Email, texts and phone
+  calls arrive over one outbound WebSocket (Agent Link, no public URL), each person gets their own
+  Hermes session across channels, and replies go back on the channel they used.
+author: Promptli
+license: MIT
+homepage: https://github.com/promptli-dev/promptli-hermes-plugin
+tags: [gateway, email, sms, phone, voice, calls, telephony]
+requires_hermes: ">=0.23.0"
+provides_tools: []
+provides_hooks:
+  - pre_tool_call
+requires_env:
+  - name: PROMPTLI_API_KEY
+    description: "Identity-scoped Promptli API key (psk_live_... or psk_test_...). `hermes promptli setup` saves it for you."
+    prompt: "Promptli API key (identity-scoped)"
+    url: "https://comms.promptli.com"
+    secret: true
+    password: true
+optional_env:
+  - name: PROMPTLI_IDENTITY
+    description: "Agent handle the key belongs to (filled in by setup; not needed for identity-scoped keys)."
+    prompt: "Agent handle (or empty)"
+    password: false
+  - name: PROMPTLI_ALLOWED_USERS
+    description: "Comma-separated email addresses and E.164 numbers that may reach Hermes. Everyone else is ignored."
+    prompt: "Allowed emails / numbers (comma-separated)"
+    password: false
+  - name: PROMPTLI_ALLOW_ALL_USERS
+    description: "true lets anyone who emails, texts or calls the agent start a (restricted) Hermes session."
+    prompt: "Let strangers reach the agent? (true/false)"
+    password: false
+  - name: PROMPTLI_HOME_CHANNEL
+    description: "Your own email or number: where cron jobs and notifications are delivered."
+    prompt: "Home email or number (or empty)"
+    password: false
+  - name: PROMPTLI_VOICE
+    description: "Phone calls: hosted (Promptli's assistant talks, Hermes supervises; default), agent (Hermes speaks every word) or off."
+    prompt: "Call mode (hosted/agent/off)"
+    password: false
+  - name: PROMPTLI_TOOLSETS
+    description: "Toolsets for Promptli sessions (default web,todo,no_mcp). `inherit` uses platform_toolsets.promptli."
+    prompt: "Toolsets for Promptli sessions"
+    password: false
+  - name: PROMPTLI_BASE_URL
+    description: "Promptli API base URL (default https://api.comms.promptli.com). For local or test stacks."
+    prompt: "Promptli API base URL (or empty)"
+    password: false

@@ -1,0 +1,53 @@
+# Hermes reads [project].dependencies when the plugin is installed or enabled (`hermes plugins enable`)
+# and prepares them in its own environment. Dependency groups are development-only (Hermes strips them).
+[project]
+name = "promptli-hermes-plugin"
+version = "0.1.0"
+description = "Give Hermes Agent its own email address and phone number with Promptli Comms"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = [
+    "promptli>=0.2.1,<0.3",
+    "promptli-gateway>=0.2.1,<0.3",
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.400,<2",
+    "pytest>=8.3,<10",
+    "pytest-asyncio>=0.25,<2",
+    "ruff>=0.11,<1",
+]
+
+[tool.uv]
+package = false
+# Release-age quarantine for what we test against (the catalog's dependency policy, rule 10).
+exclude-newer = "2026-11-15T00:00:00Z"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = ["tests/live"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S", "ASYNC", "RUF"]
+ignore = ["S101", "RUF001"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S105", "S106", "ASYNC", "RUF029"]
+
+[tool.pyright]
+pythonVersion = "3.11"
+typeCheckingMode = "basic"
+include = ["."]
+exclude = ["tests", ".venv", "**/__pycache__"]
+reportMissingImports = "warning"
+reportMissingTypeStubs = false
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+addopts = "-m 'not hermes'"
+markers = ["hermes: needs a real Hermes Agent checkout on the path (HERMES_AGENT_SRC)"]
