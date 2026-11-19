@@ -48,7 +48,7 @@ from .store import PluginState, Route
 
 log = logging.getLogger("promptli.hermes")
 
-USER_AGENT = "promptli-hermes/0.1.0"
+USER_AGENT = "promptli-hermes/0.1.1"
 # Gateway status lines (interrupting / queued / steered / saved): fine in a chat app, wrong in someone's
 # inbox or as a billed text.
 SYSTEM_PREFIXES = ("⚡", "⏳", "⏩", "💾")

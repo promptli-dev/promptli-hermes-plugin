@@ -2,14 +2,14 @@
 # and prepares them in its own environment. Dependency groups are development-only (Hermes strips them).
 [project]
 name = "promptli-hermes-plugin"
-version = "0.1.0"
+version = "0.1.1"
 description = "Give Hermes Agent its own email address and phone number with Promptli Comms"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
 dependencies = [
-    "promptli>=0.2.1,<0.3",
-    "promptli-gateway>=0.2.1,<0.3",
+    "promptli>=0.2.2,<0.3",
+    "promptli-gateway>=0.2.2,<0.3",
 ]
 
 [dependency-groups]
@@ -24,6 +24,8 @@ dev = [
 package = false
 # Release-age quarantine for what we test against (the catalog's dependency policy, rule 10).
 exclude-newer = "2026-11-15T00:00:00Z"
+# Our own first-party packages are exempt so the fix in promptli / promptli-gateway 0.2.2 is tested.
+exclude-newer-package = { promptli = "2026-11-20T00:00:00Z", promptli-gateway = "2026-11-20T00:00:00Z" }
 
 [tool.ruff]
 line-length = 120

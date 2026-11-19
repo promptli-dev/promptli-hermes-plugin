@@ -1,7 +1,7 @@
 ---
 name: promptli-comms
 description: Email, text and phone people as your Promptli agent, read past conversations and contacts, and manage the Promptli connection. Use when the user asks Hermes to email, text or call someone, check messages, or set up Promptli Comms.
-version: 0.1.0
+version: 0.1.1
 author: Promptli
 license: MIT
 metadata:

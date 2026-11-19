@@ -37,7 +37,7 @@ from .settings import (
 )
 
 MCP_SERVER = "promptli"
-USER_AGENT = "promptli-hermes/0.1.0 setup"
+USER_AGENT = "promptli-hermes/0.1.1 setup"
 
 Ask = Callable[[str], str]
 

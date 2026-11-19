@@ -20,7 +20,7 @@ from typing import Any
 
 __all__ = ["register"]
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 
 def _adapter() -> Any:

@@ -16,6 +16,6 @@ Rules:
 - Secrets only through `get_scoped_secret` (read) and `hermes_cli.config.save_env_value` (write). Never
   `os.environ`, never argv, never print or log a key. Never store an organization key.
 - `provides_tools` / `provides_hooks` in `plugin.yaml` must match what `register()` registers.
-- Dependencies keep upper bounds (`promptli>=0.2.1,<0.3`).
+- Dependencies keep upper bounds (`promptli>=0.2.2,<0.3`).
 - Checks: `uv run ruff check . && uv run ruff format --check . && uv run pyright && uv run pytest`, plus
   `hermes plugins validate . --install-deps` before any catalog pin bump.

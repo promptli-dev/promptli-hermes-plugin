@@ -163,7 +163,7 @@ async def test_callers_who_are_not_allowed_are_declined(tmp_path: Path) -> None:
 
 
 async def test_email_then_text_from_one_person_keep_their_own_channels(tmp_path: Path) -> None:
-    """Regression for the promptli-gateway 0.2.1 worker bug: each event keeps its own channel."""
+    """One person by email then text: each event keeps its own channel (promptli-gateway >= 0.2.2)."""
     ad, fake = await connected(tmp_path, PROMPTLI_ALLOWED_USERS=f"jane@example.com,{CALLER}")
 
     async def hermes(ev: Any) -> str:
