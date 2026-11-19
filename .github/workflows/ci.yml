@@ -47,10 +47,10 @@ jobs:
           path: hermes-agent
       - uses: astral-sh/setup-uv@v6
         with:
-          python-version: "3.13"
+          python-version: "3.14"
       - name: Install Hermes from its lockfile
         working-directory: hermes-agent
-        run: uv sync --frozen --python 3.13
+        run: uv sync --frozen --python 3.14
       - name: Integration tests
         run: |
           uv pip install --python hermes-agent/.venv/bin/python "promptli>=0.2.2,<0.3" "promptli-gateway>=0.2.2,<0.3" \
