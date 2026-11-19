@@ -33,7 +33,7 @@ jobs:
     # (`hermes plugins validate --install-deps`, what the plugin catalog's CI runs).
     runs-on: ubuntu-latest
     env:
-      HERMES_REF: v2026.9.24
+      HERMES_REF: v0.23.2
     steps:
       - uses: actions/checkout@v4
         with:
@@ -47,10 +47,10 @@ jobs:
           path: hermes-agent
       - uses: astral-sh/setup-uv@v6
         with:
-          python-version: "3.14"
+          python-version: "3.13"
       - name: Install Hermes from its lockfile
         working-directory: hermes-agent
-        run: uv sync --frozen --python 3.14
+        run: uv sync --frozen --python 3.13
       - name: Integration tests
         run: |
           uv pip install --python hermes-agent/.venv/bin/python "promptli>=0.2.2,<0.3" "promptli-gateway>=0.2.2,<0.3" \
